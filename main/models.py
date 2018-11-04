@@ -2,7 +2,7 @@ from django.db import models
 
 class Dosen(models.Model):
     nama = models.CharField(max_length=50,unique=True)
-    nip = models.CharField(max_length=50,unique=True)
+    NIP = models.CharField(max_length=50,unique=True)
     nilai_1 = models.FloatField()
     nilai_2 = models.FloatField()
     nilai_3 = models.FloatField()
