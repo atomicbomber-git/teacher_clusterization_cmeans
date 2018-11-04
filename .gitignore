@@ -2,6 +2,7 @@
 # $GIT_DIR/info/exclude or the core.excludesFile configuration variable as
 # described in https://git-scm.com/docs/gitignore
 
+.env
 yarn-error.log
 .cache
 *.egg-info
@@ -18,4 +19,4 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
-
+static/
