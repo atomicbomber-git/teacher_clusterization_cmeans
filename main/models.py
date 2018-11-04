@@ -1,0 +1,23 @@
+from django.db import models
+
+class Dosen(models.Model):
+    nama = models.CharField(max_length=50,unique=True)
+    nip = models.CharField(max_length=50,unique=True)
+    nilai_1 = models.FloatField()
+    nilai_2 = models.FloatField()
+    nilai_3 = models.FloatField()
+    nilai_4 = models.FloatField()
+    nilai_5 = models.FloatField()
+    nilai_6 = models.FloatField()
+    nilai_7 = models.FloatField()
+    nilai_8 = models.FloatField()
+    nilai_9 = models.FloatField()
+    nilai_10 = models.FloatField()
+    nilai_11 = models.FloatField()
+    nilai_12 = models.FloatField()
+    nilai_13 = models.FloatField()
+    nilai_14 = models.FloatField()
+    nilai_15 = models.FloatField()
+    nilai_16 = models.FloatField()
+    nilai_17 = models.FloatField()
+    cluster = models.IntegerField()
