@@ -11,23 +11,23 @@ class DosenFactory(factory.django.DjangoModelFactory):
     
     nama = factory.Faker("name")
     NIP = factory.Faker("phone_number")
-    nilai_1 =  lambda x: random.randint(0, 10000) / 100
-    nilai_2 =  lambda x: random.randint(0, 10000) / 100
-    nilai_3 =  lambda x: random.randint(0, 10000) / 100
-    nilai_4 =  lambda x: random.randint(0, 10000) / 100
-    nilai_5 =  lambda x: random.randint(0, 10000) / 100
-    nilai_6 =  lambda x: random.randint(0, 10000) / 100
-    nilai_7 =  lambda x: random.randint(0, 10000) / 100
-    nilai_8 =  lambda x: random.randint(0, 10000) / 100
-    nilai_9 =  lambda x: random.randint(0, 10000) / 100
-    nilai_10 = lambda x: random.randint(0, 10000) / 100
-    nilai_11 = lambda x: random.randint(0, 10000) / 100
-    nilai_12 = lambda x: random.randint(0, 10000) / 100
-    nilai_13 = lambda x: random.randint(0, 10000) / 100
-    nilai_14 = lambda x: random.randint(0, 10000) / 100
-    nilai_15 = lambda x: random.randint(0, 10000) / 100
-    nilai_16 = lambda x: random.randint(0, 10000) / 100
-    nilai_17 = lambda x: random.randint(0, 10000) / 100
+    nilai_1 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_2 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_3 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_4 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_5 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_6 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_7 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_8 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_9 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100)  
+    nilai_10 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    nilai_11 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    nilai_12 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    nilai_13 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    nilai_14 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    nilai_15 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    nilai_16 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    nilai_17 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
     cluster = 0
 
 class Command(BaseCommand):
