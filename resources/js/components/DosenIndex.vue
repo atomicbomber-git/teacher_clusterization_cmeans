@@ -1,0 +1,100 @@
+<template>
+    <table class="table table-sm table-bordered">
+        <thead class="thead thead-dark">
+            <tr>
+                <th> # </th>
+                <th> Nama </th>
+                <th> NIP </th>
+                <th> N1 </th>
+                <th> N2 </th>
+                <th> N3 </th>
+                <th> N4 </th>
+                <th> N5 </th>
+                <th> N6 </th>
+                <th> N7 </th>
+                <th> N8 </th>
+                <th> N9 </th>
+                <th> N10 </th>
+                <th> N11 </th>
+                <th> N12 </th>
+                <th> N13 </th>
+                <th> N14 </th>
+                <th> N15 </th>
+                <th> N16 </th>
+                <th> N17 </th>
+                <th> Cluster </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(dosen, i) in dosens" :key="dosen.pk">
+                <td> {{ i + 1 }} </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nama')" type="text" max="100" v-model="dosen.fields.nama"> <button @click=deleteData(dosen) class="btn btn-sm btn-danger"> Hapus </button>  </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'NIP')" type="text" v-model="dosen.fields.NIP"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_1')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_1"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_2')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_2"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_3')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_3"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_4')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_4"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_5')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_5"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_6')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_6"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_7')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_7"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_8')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_8"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_9')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_9"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_10')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_10"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_11')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_11"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_12')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_12"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_13')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_13"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_14')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_14"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_15')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_15"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_16')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_16"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_17')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_17"> </td>
+                <td> {{ dosen.fields.cluster }} </td>
+            </tr>
+        </tbody>
+    </table>
+</template>
+
+<script>
+import { debounce, keyBy, map, orderBy } from "lodash";
+
+export default {
+  data() {
+    return {
+      dosens: orderBy(map(keyBy(window.dosens, "pk"), dosen => {
+        return { ...dosen, isUpdating: false };
+      }), 'fields.nama'),
+      original_dosens: keyBy(window.dosens, "pk")
+    };
+  },
+
+  methods: {
+    updateData: debounce((dosen, field) => {
+      dosen.isUpdating = true;
+      axios
+        .post("/update", {
+          id: dosen.pk,
+          field: field,
+          value: dosen.fields[field]
+        })
+        .then(response => {
+          dosen.isUpdating = false;
+          console.log(response.data);
+        })
+        .catch(error => {
+          dosen.isUpdating = false;
+          alert("Update gagal");
+        });
+    }, 400),
+
+    deleteData(dosen) {
+        axios.post(`/delete/${dosen.pk}`)
+          .then(response => {
+            window.location.reload(true)
+          })
+          .catch(error => {
+            alert(error)
+          })
+    }
+  }
+};
+</script>
+
