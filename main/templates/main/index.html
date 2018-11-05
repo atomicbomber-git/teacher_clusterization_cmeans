@@ -7,11 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'main/css/app.css' %}">
+
+    <style>
+        * {
+            font-size: 100%;
+        }
+
+        .table-sm td {
+            padding: 0rem;
+        }
+
+        input.score {
+            width: 3.7rem;
+        }
+
+    </style>
+
     <title> Halaman Utama </title>
 </head>
 <body>
-    <div class="container mt-4">
+    <div class="container-fluid mt-4">
         <h1> Data Kuesioner Performa Dosen </h1>
+        <hr>
         
         <table class="table table-sm table-striped table-bordered">
             <thead>
@@ -42,32 +59,36 @@
                 {% for dosen in dosens %}
                 <tr>
                     <td> {{ forloop.counter }} </td>
-                    <td> {{ dosen.nama }} </td>
-                    <td> {{ dosen.nilai_1 }} </td>
-                    <td> {{ dosen.nilai_2 }} </td>
-                    <td> {{ dosen.nilai_3 }} </td>
-                    <td> {{ dosen.nilai_4 }} </td>
-                    <td> {{ dosen.nilai_5 }} </td>
-                    <td> {{ dosen.nilai_6 }} </td>
-                    <td> {{ dosen.nilai_7 }} </td>
-                    <td> {{ dosen.nilai_8 }} </td>
-                    <td> {{ dosen.nilai_9 }} </td>
-                    <td> {{ dosen.nilai_10 }} </td>
-                    <td> {{ dosen.nilai_11 }} </td>
-                    <td> {{ dosen.nilai_12 }} </td>
-                    <td> {{ dosen.nilai_13 }} </td>
-                    <td> {{ dosen.nilai_14 }} </td>
-                    <td> {{ dosen.nilai_15 }} </td>
-                    <td> {{ dosen.nilai_16 }} </td>
-                    <td> {{ dosen.nilai_17 }} </td>
+                    <td> <input form="edit-form" type="text" value="{{ dosen.nama }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_1]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_1 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_2]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_2 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_3]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_3 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_4]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_4 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_5]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_5 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_6]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_6 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_7]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_7 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_8]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_8 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_9]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_9 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_10]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_10 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_11]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_11 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_12]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_12 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_13]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_13 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_14]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_14 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_15]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_15 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_16]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_16 }}"> </td>
+                    <td> <input name="data[{{ dosen.id }}][nilai_17]" form="edit-form" class="score" type="number" step="0.01" value="{{ dosen.nilai_17 }}"> </td>
                     <td> {{ dosen.cluster }} </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        
-
+        <form id="edit-form" method="POST" action="{% url 'dosen.update' %}">
+            {% csrf_token %}
+            <button class="btn btn-primary">
+                Update Data
+            </button>
+        </form>
 
     </div>
     <script src="{% static 'main/js/app.js' %}"></script>
