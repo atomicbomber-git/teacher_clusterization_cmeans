@@ -46181,10 +46181,25 @@ var _default = {
           isUpdating: false
         });
       }), 'fields.nama'),
-      original_dosens: (0, _lodash.keyBy)(window.dosens, "pk")
+      sort_by: 'nama',
+      order: 'asc'
     };
   },
+  computed: {
+    orderedDosens: function orderedDosens() {
+      return (0, _lodash.orderBy)(this.dosens, "fields.".concat(this.sort_by), [this.order]);
+    }
+  },
   methods: {
+    sortBy: function sortBy(field) {
+      this.sort_by = field;
+
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      } else {
+        this.order = 'asc';
+      }
+    },
     updateData: (0, _lodash.debounce)(function (dosen, field) {
       dosen.isUpdating = true;
       axios.post("/update", {
@@ -46222,11 +46237,315 @@ exports.default = _default;
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("table", { staticClass: "table table-sm table-bordered" }, [
-    _vm._m(0),
+    _c("thead", { staticClass: "thead thead-dark" }, [
+      _c("tr", [
+        _c("th", [_vm._v(" # ")]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nama")
+                }
+              }
+            },
+            [_vm._v(" Nama ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("NIP")
+                }
+              }
+            },
+            [_vm._v(" NIP ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_1")
+                }
+              }
+            },
+            [_vm._v(" N1 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_2")
+                }
+              }
+            },
+            [_vm._v(" N2 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_3")
+                }
+              }
+            },
+            [_vm._v(" N3 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_4")
+                }
+              }
+            },
+            [_vm._v(" N4 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_5")
+                }
+              }
+            },
+            [_vm._v(" N5 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_6")
+                }
+              }
+            },
+            [_vm._v(" N6 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_7")
+                }
+              }
+            },
+            [_vm._v(" N7 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_8")
+                }
+              }
+            },
+            [_vm._v(" N8 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_9")
+                }
+              }
+            },
+            [_vm._v(" N9 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_10")
+                }
+              }
+            },
+            [_vm._v(" N10 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_11")
+                }
+              }
+            },
+            [_vm._v(" N11 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_12")
+                }
+              }
+            },
+            [_vm._v(" N12 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_13")
+                }
+              }
+            },
+            [_vm._v(" N13 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_14")
+                }
+              }
+            },
+            [_vm._v(" N14 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_15")
+                }
+              }
+            },
+            [_vm._v(" N15 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_16")
+                }
+              }
+            },
+            [_vm._v(" N16 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("nilai_17")
+                }
+              }
+            },
+            [_vm._v(" N17 ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link text-light",
+              on: {
+                click: function($event) {
+                  _vm.sortBy("cluster")
+                }
+              }
+            },
+            [_vm._v(" Cluster ")]
+          )
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "tbody",
-      _vm._l(_vm.dosens, function(dosen, i) {
+      _vm._l(_vm.orderedDosens, function(dosen, i) {
         return _c("tr", { key: dosen.pk }, [
           _c("td", [_vm._v(" " + _vm._s(i + 1) + " ")]),
           _vm._v(" "),
@@ -46779,58 +47098,7 @@ exports.default = _default;
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead thead-dark" }, [
-      _c("tr", [
-        _c("th", [_vm._v(" # ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" Nama ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" NIP ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N1 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N2 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N3 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N4 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N5 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N6 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N7 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N8 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N9 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N10 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N11 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N12 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N13 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N14 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N15 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N16 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" N17 ")]),
-        _vm._v(" "),
-        _c("th", [_vm._v(" Cluster ")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {
@@ -46919,7 +47187,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33515" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

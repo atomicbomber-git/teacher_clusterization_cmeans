@@ -3,30 +3,30 @@
         <thead class="thead thead-dark">
             <tr>
                 <th> # </th>
-                <th> Nama </th>
-                <th> NIP </th>
-                <th> N1 </th>
-                <th> N2 </th>
-                <th> N3 </th>
-                <th> N4 </th>
-                <th> N5 </th>
-                <th> N6 </th>
-                <th> N7 </th>
-                <th> N8 </th>
-                <th> N9 </th>
-                <th> N10 </th>
-                <th> N11 </th>
-                <th> N12 </th>
-                <th> N13 </th>
-                <th> N14 </th>
-                <th> N15 </th>
-                <th> N16 </th>
-                <th> N17 </th>
-                <th> Cluster </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nama')"> Nama </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('NIP')"> NIP </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_1')"> N1 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_2')"> N2 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_3')"> N3 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_4')"> N4 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_5')"> N5 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_6')"> N6 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_7')"> N7 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_8')"> N8 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_9')"> N9 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_10')"> N10 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_11')"> N11 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_12')"> N12 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_13')"> N13 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_14')"> N14 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_15')"> N15 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_16')"> N16 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('nilai_17')"> N17 </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('cluster')"> Cluster </button> </th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(dosen, i) in dosens" :key="dosen.pk">
+            <tr v-for="(dosen, i) in orderedDosens" :key="dosen.pk">
                 <td> {{ i + 1 }} </td>
                 <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nama')" type="text" max="100" v-model="dosen.fields.nama"> <button @click=deleteData(dosen) class="btn btn-sm btn-danger"> Hapus </button>  </td>
                 <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'NIP')" type="text" v-model="dosen.fields.NIP"> </td>
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { debounce, keyBy, map, orderBy } from "lodash";
+import { debounce, keyBy, map, orderBy, sortBy } from "lodash";
 
 export default {
   data() {
@@ -62,11 +62,28 @@ export default {
       dosens: orderBy(map(keyBy(window.dosens, "pk"), dosen => {
         return { ...dosen, isUpdating: false };
       }), 'fields.nama'),
-      original_dosens: keyBy(window.dosens, "pk")
+
+      sort_by: 'nama',
+      order: 'asc'
     };
   },
 
+  computed: {
+    orderedDosens() {
+      return orderBy(this.dosens, `fields.${this.sort_by}`, [this.order])
+    }
+  },
+
   methods: {
+    sortBy(field) {
+      this.sort_by = field
+      if (this.order == 'asc') {
+        this.order = 'desc'
+      } else {
+        this.order = 'asc'
+      }
+    },
+
     updateData: debounce((dosen, field) => {
       dosen.isUpdating = true;
       axios
