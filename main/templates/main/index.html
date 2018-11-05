@@ -11,10 +11,64 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1> Halaman Utama, Yo </h1>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci quidem, expedita commodi illo non architecto facilis nobis deserunt, mollitia ut eveniet ipsam suscipit ex nisi magnam perferendis inventore iusto.
-        </p>
+        <h1> Data Kuesioner Performa Dosen </h1>
+        
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th> No. </th>
+                    <th> Nama </th>
+                    <th> N1 </th>
+                    <th> N2 </th>
+                    <th> N3 </th>
+                    <th> N4 </th>
+                    <th> N5 </th>
+                    <th> N6 </th>
+                    <th> N7 </th>
+                    <th> N8 </th>
+                    <th> N9 </th>
+                    <th> N10 </th>
+                    <th> N11 </th>
+                    <th> N12 </th>
+                    <th> N13 </th>
+                    <th> N14 </th>
+                    <th> N15 </th>
+                    <th> N16 </th>
+                    <th> N17 </th>
+                    <th> Cluster </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dosen in dosens %}
+                <tr>
+                    <td> {{ forloop.counter }} </td>
+                    <td> {{ dosen.nama }} </td>
+                    <td> {{ dosen.nilai_1 }} </td>
+                    <td> {{ dosen.nilai_2 }} </td>
+                    <td> {{ dosen.nilai_3 }} </td>
+                    <td> {{ dosen.nilai_4 }} </td>
+                    <td> {{ dosen.nilai_5 }} </td>
+                    <td> {{ dosen.nilai_6 }} </td>
+                    <td> {{ dosen.nilai_7 }} </td>
+                    <td> {{ dosen.nilai_8 }} </td>
+                    <td> {{ dosen.nilai_9 }} </td>
+                    <td> {{ dosen.nilai_10 }} </td>
+                    <td> {{ dosen.nilai_11 }} </td>
+                    <td> {{ dosen.nilai_12 }} </td>
+                    <td> {{ dosen.nilai_13 }} </td>
+                    <td> {{ dosen.nilai_14 }} </td>
+                    <td> {{ dosen.nilai_15 }} </td>
+                    <td> {{ dosen.nilai_16 }} </td>
+                    <td> {{ dosen.nilai_17 }} </td>
+                    <td> {{ dosen.cluster }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        
+
+
     </div>
     <script src="{% static 'main/js/app.js' %}"></script>
 </body>
