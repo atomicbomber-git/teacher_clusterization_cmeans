@@ -25,7 +25,7 @@ SECRET_KEY = 'v98*x+z$j%k3=^%fvv9k#oyg13ae4)1c0mvd7*lmw6%h7&e^dm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["tcc.com", "localhost"]
+ALLOWED_HOSTS = ["tcc.com", "localhost", "cmeans.ceritaku.club"]
 
 
 # Application definition
