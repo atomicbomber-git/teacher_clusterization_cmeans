@@ -22,8 +22,8 @@ def clusterize(data, features, n_cluster=5, fuzziness=2, n_iteration=100):
                 num = 0
                 den = 0
                 for key, record in data.items():
-                    num += membership_matrix[key][cluster] ** fuzziness * record[feature]
-                    den += membership_matrix[key][cluster] ** fuzziness
+                    num += (membership_matrix[key][cluster] ** fuzziness) * record[feature]
+                    den += (membership_matrix[key][cluster] ** fuzziness)
                 centroid[feature] = num / den
 
     def distance(vec_a, vec_b):
@@ -50,7 +50,7 @@ def clusterize(data, features, n_cluster=5, fuzziness=2, n_iteration=100):
 
     result = {}
     for key, record in membership_matrix.items():
-        result[key] = record.index(min(record)) 
+        result[key] = record.index(max(record)) 
 
     return result
 

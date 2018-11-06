@@ -64,7 +64,7 @@ def cluster(request):
         'nilai_17',
     ]
 
-    clusters = cmeans.clusterize(processed_data, features=features, n_cluster=n_cluster)
+    clusters = cmeans.clusterize(processed_data, features=features, n_cluster=n_cluster, n_iteration=200)
     
     for dosen_id, cluster in clusters.items():
         dosen = Dosen.objects.get(id=dosen_id)
