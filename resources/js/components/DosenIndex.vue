@@ -5,6 +5,9 @@
                 <th> # </th>
                 <th> <button class="btn btn-link text-light" @click="sortBy('nama')"> Nama </button> </th>
                 <th> <button class="btn btn-link text-light" @click="sortBy('NIP')"> NIP </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('kelas')"> Kelas </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('kode_mk')"> Kode MK </button> </th>
+                <th> <button class="btn btn-link text-light" @click="sortBy('mata_kuliah')"> Mata Kuliah </button> </th>
                 <th> <button class="btn btn-link text-light" @click="sortBy('nilai_1')"> N1 </button> </th>
                 <th> <button class="btn btn-link text-light" @click="sortBy('nilai_2')"> N2 </button> </th>
                 <th> <button class="btn btn-link text-light" @click="sortBy('nilai_3')"> N3 </button> </th>
@@ -30,6 +33,9 @@
                 <td> {{ i + 1 }} </td>
                 <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nama')" type="text" max="100" v-model="dosen.fields.nama"> <button @click=deleteData(dosen) class="btn btn-sm btn-danger"> Hapus </button>  </td>
                 <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'NIP')" type="text" v-model="dosen.fields.NIP"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'kelas')" type="text" v-model="dosen.fields.kelas"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'kode_mk')" type="text" v-model="dosen.fields.kode_mk"> </td>
+                <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'mata_kuliah')" type="text" v-model="dosen.fields.mata_kuliah"> </td>
                 <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_1')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_1"> </td>
                 <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_2')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_2"> </td>
                 <td> <input :class="{'border-danger': dosen.isUpdating}"  @change="updateData(dosen, 'nilai_3')" class="score" type="number" step="0.01" max="100" v-model="dosen.fields.nilai_3"> </td>

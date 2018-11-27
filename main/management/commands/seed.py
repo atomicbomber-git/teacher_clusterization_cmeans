@@ -28,6 +28,9 @@ class DosenFactory(factory.django.DjangoModelFactory):
     nilai_15 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
     nilai_16 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
     nilai_17 = factory.LazyAttribute(lambda x: random.randint(0, 10000) / 100) 
+    kelas = 'A'
+    kode_mk = 'AX123' 
+    mata_kuliah = 'Bahasa Perancis' 
     cluster = 0
 
 class Command(BaseCommand):

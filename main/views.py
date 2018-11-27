@@ -16,6 +16,8 @@ def index(request):
         'dosens': dosens
     })
 
+def view(request):
+    return render(request, "main/view.html", {'dosens': Dosen.objects.all()})
 
 def create(request):
 

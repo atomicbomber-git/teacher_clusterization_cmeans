@@ -3,6 +3,9 @@ from django.db import models
 class Dosen(models.Model):
     nama = models.CharField(max_length=50)
     NIP = models.CharField(max_length=50,unique=True)
+    kelas = models.CharField(max_length=50,null=True)
+    kode_mk = models.CharField(max_length=50,null=True)
+    mata_kuliah = models.CharField(max_length=50,null=True)
     nilai_1 = models.FloatField(default=0)
     nilai_2 = models.FloatField(default=0)
     nilai_3 = models.FloatField(default=0)

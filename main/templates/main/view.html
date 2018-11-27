@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'main/css/app.css' %}">
+
+    <style>
+        * {
+            font-size: 100%;
+        }
+
+        .table-sm td {
+            padding: 0rem;
+        }
+
+        input.score {
+            width: 4rem;
+        }
+
+    </style>
+
+    <title> Halaman Utama </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Kelola Data
+                    </a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link" href="/view">
+                        Lihat Data
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <table class="table table-sm table-striped">
+            <thead class="thead-dark">
+                <th> # </th>
+                <th> Nama Dosen </th>
+                <th> NIP </th>
+                <th> Kode MK </th>
+                <th> Kelas </th>
+                <th> Mata Kuliah </th>
+                <th> Cluster </th>
+            </thead>
+            <tbody>
+                {% for dosen in dosens %}
+                <tr>
+                    <td> {{ forloop.counter }}. </td>
+                    <td> {{ dosen.nama }} </td>
+                    <td> {{ dosen.NIP }} </td>
+                    <td> {{ dosen.kode_mk }} </td>
+                    <td> {{ dosen.kelas }} </td>
+                    <td> {{ dosen.mata_kuliah }} </td>
+                    <td> {{ dosen.cluster }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{% static 'main/js/app.js' %}"></script>
+</body>
+</html>
